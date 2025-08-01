@@ -8,11 +8,23 @@ import config from './config/algolia.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middlewares
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+// Lista blanca de orígenes permitidos
+const whitelist = [process.env.FRONTEND_URL, 'http://localhost:5173'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Permitir solicitudes sin origen (por ejemplo, Postman o apps móviles)
+    if (!origin || whitelist.some(url => origin.startsWith(url))) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
   credentials: true
-}));
+};
+
+// Middlewares
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Logging middleware
