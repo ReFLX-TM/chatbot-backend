@@ -1,0 +1,61 @@
+{
+  "description": "Schema para productos farmacéuticos de Farmatodo",
+  "fields": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único del producto"
+    },
+    "name": {
+      "type": "string", 
+      "description": "Nombre comercial del producto"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Marca del producto"
+    },
+    "category": {
+      "type": "string",
+      "description": "Categoría principal del producto"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Subcategoría específica"
+    },
+    "active_ingredient": {
+      "type": "string",
+      "description": "Principio activo principal"
+    },
+    "description": {
+      "type": "string",
+      "description": "Descripción detallada del producto (campo para embeddings)"
+    },
+    "price": {
+      "type": "number",
+      "description": "Precio en bolívares"
+    },
+    "presentation": {
+      "type": "string",
+      "description": "Presentación del producto (tabletas, jarabe, gel, etc.)"
+    },
+    "size": {
+      "type": "string",
+      "description": "Tamaño o cantidad"
+    },
+    "prescription_required": {
+      "type": "boolean",
+      "description": "Si requiere receta médica"
+    },
+    "stock": {
+      "type": "number",
+      "description": "Cantidad disponible"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Etiquetas para búsqueda (dolor, fiebre, cabello, etc.)"
+    },
+    "_vector": {
+      "type": "array",
+      "description": "Vector de embeddings generado a partir de la descripción"
+    }
+  }
+}
